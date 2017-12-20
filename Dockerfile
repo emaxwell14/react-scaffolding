@@ -13,8 +13,8 @@ ADD . /
 # Install any needed packages
 RUN cd /app && yarn
 
-# Make port 3000 available to the world outside this container
-EXPOSE 3000
+# Make port 80 available to the world outside this container
+EXPOSE 80
 
 # Run start when the container launches
 CMD ["npm", "start"]

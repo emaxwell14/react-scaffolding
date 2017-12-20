@@ -4,6 +4,8 @@ const express = require('express');
 const webpack = require('webpack');
 const webpackDevMiddleware = require('webpack-dev-middleware');
 const webpackHotMiddleware = require('webpack-hot-middleware');
+const proxy = require('http-proxy-middleware');
+const PORT = 80;
 
 const app = express();
 // TODO for prod, use npm build?
@@ -19,7 +21,16 @@ app.use(webpackDevMiddleware(compiler, {
 
 app.use(webpackHotMiddleware(compiler));
 
-// Serve the files on port 3000.
-app.listen(3000, function () {
-  console.log('App listening on port 3000!\n');
+// Use reverse proxy for /app
+app.use('*', proxy('/app', {
+    target: 'http://localhost/',
+    ws: true,                         // proxy websockets
+    pathRewrite: {
+      '^/app': '/',     // rewrite path
+    },
+}));
+
+// Serve the files on port 80.
+app.listen(PORT, function () {
+  console.log(`App listening on port ${PORT}!\n`);
 });
