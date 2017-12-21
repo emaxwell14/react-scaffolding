@@ -1,5 +1,7 @@
 import React from 'react';
 import { render } from 'react-dom';
+import { BrowserRouter } from 'react-router-dom';
+import Main from './Main/Main.jsx';
 import api from './api.js';
 
 class App extends React.Component {	
@@ -16,9 +18,11 @@ class App extends React.Component {
     });
   }
 
+// TODO move text to sub
   render() {
     return ( 
       <div>
+        <Main/>
         <h1>Hello React project</h1>
         <button onClick={this.callApi}>Call API</button>
         <p>{this.state.apiResponse}</p>
@@ -28,4 +32,9 @@ class App extends React.Component {
 
 }
 
-render(<App/>, document.getElementById('app'));
+render(
+  (
+    <BrowserRouter>
+     <App/>
+    </BrowserRouter>
+  ), document.getElementById('app'));
