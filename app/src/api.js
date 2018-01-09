@@ -1,7 +1,7 @@
 const URL = 'http://localhost:8080/';
 
 const get = () =>
-  fetch(URL + path, {
+  fetch(URL, {
     method: 'GET',
     headers: {
       Accept: 'application/json',
@@ -21,6 +21,16 @@ const getTasks = () =>
   }).then(response => response.json())
     .catch(e => console.error(e));
 
-const api = { get, getTasks }; 
+const getTask = (taskId) =>
+    fetch(URL + 'tasks/' + taskId, {
+        method: 'GET',
+        headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+        }
+    }).then(response => response.json())
+        .catch(e => console.error(e));
+
+const api = { get, getTasks, getTask };
 
 export default api;

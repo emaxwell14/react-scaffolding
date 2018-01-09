@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom'
 import api from '../../../api.js';
 
 class Tasks extends Component {
@@ -6,6 +7,7 @@ class Tasks extends Component {
     super(props);
     this.state = { tasks: [] };
     this.getTasks = this.getTasks.bind(this);
+    this.openTask = this.openTask.bind(this);
   }
 
   componentDidMount() {
@@ -14,27 +16,31 @@ class Tasks extends Component {
 
   getTasks() {
     api.getTasks().then((tasks) => {
-      console.log('in Then');
-      console.log(tasks);
       this.setState({ tasks });
     });
   }
 
+  openTask() {
+
+  }
+
   render() {
     const { tasks } = this.state;
-    console.log(this.state);
-    console.log(tasks);
     return (
       <div>
         <h1>Task List</h1>
-	{tasks.length > 0 &&
-	  <ul>
-            {tasks.map(task => (<li key={task._id}>{task.name}</li>))}
+        {tasks.length > 0 &&
+          <ul>
+              {tasks.map(task => (
+                  <li key={task._id}>
+                      <Link to={`/tasks/${task._id}`}>{task.name}</Link>
+                  </li>
+              ))}
           </ul>
-	}
-	{tasks.length === 0 && 
-	  <p style={{ color: 'red' }}>No Tasks Found!</p>
-	}
+        }
+        {tasks.length === 0 &&
+          <p style={{ color: 'red' }}>No Tasks Found!</p>
+        }
       </div>
     );
  }
