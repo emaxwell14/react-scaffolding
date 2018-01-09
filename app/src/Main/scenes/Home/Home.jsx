@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { Component } from 'react';
 import api from '../../../api.js';
 
-class Home extends React.Component {
+class Home extends Component {
   constructor(props) {
     super(props);
     this.state = { apiResponse: '-'};
@@ -9,7 +9,7 @@ class Home extends React.Component {
   }
 
   callApi() {
-    const apiResponse = api.get().then((apiResponse) => {
+    api.get().then((apiResponse) => {
       this.setState({ apiResponse });
     });
   }
