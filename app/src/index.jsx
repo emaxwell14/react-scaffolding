@@ -1,25 +1,20 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { render } from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
-import Main from './Main/Main.jsx';
-import Header from './Header/Header.jsx';
+import Main from './Main/Main';
+import Header from './Header/Header';
 
-class App extends Component {
-  
-  render() {
-    return ( 
-      <div>
-        <Header/>
-        <Main/>
-      </div>
-    );
-  }
-
-}
+const App = () => (
+    <div>
+        <Header />
+        <Main />
+    </div>
+);
 
 render(
-  (
-    <BrowserRouter>
-     <App/>
-    </BrowserRouter>
-  ), document.getElementById('app'));
+    (
+        <BrowserRouter>
+            <App />
+        </BrowserRouter>
+    ), document.getElementById('app'),
+);
