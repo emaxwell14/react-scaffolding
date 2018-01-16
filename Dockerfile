@@ -1,9 +1,6 @@
 # Use an official node runtime as a parent image
 FROM node:latest
 
-ENV http_proxy http://proxy-tech.svc.ext.tdc:3128
-ENV https_proxy http://proxy-tech.svc.ext.tdc:3128
-
 # Set the working directory to /app
 WORKDIR /app
 
