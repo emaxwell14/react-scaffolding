@@ -1,5 +1,6 @@
 const URL = 'http://localhost:8080/';
 
+// TODO replace with middleware
 const get = () =>
     fetch(URL, {
         method: 'GET',

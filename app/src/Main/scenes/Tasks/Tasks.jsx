@@ -7,7 +7,6 @@ class Tasks extends Component {
         super(props);
         this.state = { tasks: [] };
         this.getTasks = this.getTasks.bind(this);
-        this.openTask = this.openTask.bind(this);
     }
 
     componentDidMount() {
