@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Switch, Route } from 'react-router-dom';
 import Home from './scenes/Home/Home';
-import Tasks from './scenes/Tasks/Tasks';
-import Task from './scenes/Task/Task';
+import Tasks from './scenes/Task/Tasks';
+import Task from './scenes/Task/scenes/Task/Task';
 
 class Main extends Component {
     render() {

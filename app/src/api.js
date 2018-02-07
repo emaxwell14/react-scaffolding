@@ -1,6 +1,6 @@
 const URL = 'http://localhost:8080/';
 
-// TODO replace with middleware
+// TODO replace with restful.js middleware
 const get = () =>
     fetch(URL, {
         method: 'GET',

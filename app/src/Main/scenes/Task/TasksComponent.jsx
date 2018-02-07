@@ -1,27 +1,25 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import api from '../../../api';
+import { string, func, shape, bool, arrayOf } from 'prop-types';
 
-class Tasks extends Component {
-    constructor(props) {
-        super(props);
-        this.state = { tasks: [] };
-        this.getTasks = this.getTasks.bind(this);
-    }
+const propTypes = {
+    getTasks: func,
+    tasks: arrayOf(shape({
+        name: string,
+        description: string,
+        createdDate: string,
+        status: bool,
+    })),
+};
 
+class TasksComponent extends Component {
     componentDidMount() {
-        this.getTasks();
-    }
-
-    getTasks() {
-        api.getTasks().then((tasks) => {
-            this.setState({ tasks });
-        });
+        this.props.getTasks();
     }
 
     /* eslint-disable no-underscore-dangle */
     render() {
-        const { tasks } = this.state;
+        const { tasks } = this.props;
         return (
             <div>
                 <h1>Task List</h1>
@@ -42,5 +40,7 @@ class Tasks extends Component {
     }
 }
 
-export default Tasks;
+TasksComponent.propTypes = propTypes;
+
+export default TasksComponent;
 
