@@ -7,5 +7,6 @@ common.plugins.push(
     new webpack.NamedModulesPlugin(),
 );
 
+common.devtool = 'source-map';
 common.output.publicPath = '/';
 module.exports = common;

@@ -3,9 +3,7 @@ import api from '../../../api';
 
 function callApi() {
     return (dispatch) => {
-        api.get().then((payload) => {
-            dispatch({ ...types.CALL_API, payload });
-        });
+        dispatch({ ...types.CALL_API, payload: api.get() });
     };
 }
 

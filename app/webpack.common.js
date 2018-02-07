@@ -7,7 +7,9 @@ module.exports = {
     entry: {
         app: ['./src/index.jsx'],
         vendor: [
-            'lodash',
+            'lodash', 'redux-thunk', 'react', 'react-dom', 'react-redux', 'react-router', 'redux-promise-middleware',
+            'prop-types', 'react-router-dom', 'history', 'react-router-redux', 'autobind-decorator',
+            'babel-polyfill',
         ],
     },
     module: {
