@@ -1,0 +1,23 @@
+{
+  "home": {
+    "name": "Accueil",
+    "title": "Bienvenue"
+  },
+  "tasks": {
+    "name": "Tâches",
+    "description": "Description ",
+    "createdDate": "Date de création ",
+    "status": "Statut ",
+    "listTitle": "Liste de tâches",
+    "listEmpty": "Aucune tâches trouvée!",
+    "status": {
+      "name": "Statut",
+      "type":{
+        "pending": "En Cours"
+      }
+    }
+  },
+  "actions": {
+    "callApi": "Appeller l'API"
+  }
+}

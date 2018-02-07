@@ -1,16 +1,17 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { translate } from 'react-i18next';
 
-const Header = () => (
+const Header = ({ t }) => ( // eslint-disable-line react/prop-types
     <header>
         <nav>
             <ul>
-                <li><Link to="/">Home</Link></li>
-                <li><Link to="/tasks">Tasks</Link></li>
+                <li><Link to="/">{t('home.name')}</Link></li>
+                <li><Link to="/tasks">{t('tasks.name')}</Link></li>
             </ul>
         </nav>
     </header>
 );
 
-export default Header;
+export default translate()(Header);
 

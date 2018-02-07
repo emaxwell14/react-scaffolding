@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { string, func, shape, bool, arrayOf } from 'prop-types';
+import { translate } from 'react-i18next';
 
 const propTypes = {
     getTasks: func,
@@ -10,8 +11,10 @@ const propTypes = {
         createdDate: string,
         status: bool,
     })),
+    t: func,
 };
 
+@translate()
 class TasksComponent extends Component {
     componentDidMount() {
         this.props.getTasks();
@@ -19,21 +22,22 @@ class TasksComponent extends Component {
 
     /* eslint-disable no-underscore-dangle */
     render() {
-        const { tasks } = this.props;
+        const { tasks, t } = this.props;
+        const hasTasks = tasks && tasks.length > 0;
         return (
             <div>
-                <h1>Task List</h1>
-                {tasks.length > 0 &&
-                <ul>
-                    {tasks.map(task => (
-                        <li key={task._id}>
-                            <Link to={`/tasks/${task._id}`}>{task.name}</Link>
-                        </li>
-                    ))}
-                </ul>
+                <h1>{t('tasks.listTitle')}</h1>
+                {hasTasks &&
+                    <ul>
+                        {tasks.map(task => (
+                            <li key={task._id}>
+                                <Link to={`/tasks/${task._id}`}>{task.name}</Link>
+                            </li>
+                        ))}
+                    </ul>
                 }
-                {tasks.length === 0 &&
-                <p style={{ color: 'red' }}>No Tasks Found!</p>
+                {!hasTasks &&
+                    <p style={{ color: 'red' }}>{t('tasks.listEmpty')}</p>
                 }
             </div>
         );
