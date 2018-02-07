@@ -1,17 +1,10 @@
 import api from '../../../api';
 import types from './types';
 
-// const getTasks = () => dispatch => dispatch({ ...types.GET_TASKS, payload: api.getTasks() });
-
-function getTasks() {
-    return (dispatch) => {
-        dispatch({ ...types.GET_TASKS, payload: api.getTasks() });
-    };
-}
-
+const getTask = id => dispatch => dispatch({ ...types.GET_TASK, payload: api.getTask(id) });
 
 const actions = {
-    getTasks,
+    getTask,
 };
 
 export { actions as default };

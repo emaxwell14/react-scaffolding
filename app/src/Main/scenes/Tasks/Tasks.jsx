@@ -4,7 +4,7 @@ import TasksComponent from './TasksComponent';
 
 function mapStateToProps(state) {
     return {
-        tasks: state.mainStore.tasksStore.data.tasks,
+        tasks: state.mainStore.tasksStore.tasks,
     };
 }
 

@@ -1,4 +1,4 @@
 export default {
-    GET_TASKS: { type: 'GET_TASKS' },
-    GET_TASKS_FULFILLED: { type: 'GET_TASKS_FULFILLED' },
+    GET_TASK: { type: 'GET_TASK' },
+    GET_TASK_FULFILLED: { type: 'GET_TASK_FULFILLED' },
 };
