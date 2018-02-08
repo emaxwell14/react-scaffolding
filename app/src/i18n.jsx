@@ -21,9 +21,12 @@ i18n.use(XHR).use(LanguageDetector).init({
             return value;
         },
     },
+    react: {
+        wait: true, // Prevent switch from key to selected language on initial load
+    },
 });
 
-// catch the event and make changes accordingly
+// catch the event and make changes accordingly. (Note: Triggering method is called changeLanguage)
 i18n.on('languageChanged', (lng) => {
     moment.locale(lng);
 });

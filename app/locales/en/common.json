@@ -19,6 +19,10 @@
     }
   },
   "actions": {
-    "callApi": "Call API"
+    "callApi": "Call API",
+    "languages": {
+      "en": "English",
+      "fr": "French"
+    }
   }
 }
