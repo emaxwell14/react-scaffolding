@@ -1,30 +1,34 @@
 import React from 'react';
-import { render } from 'react-dom';
+import ReactDOM from 'react-dom';
 import { ConnectedRouter } from 'react-router-redux';
 import { Provider } from 'react-redux';
 import createHistory from 'history/createHashHistory';
 import { I18nextProvider } from 'react-i18next';
-import Main from './Main/Main';
-import Header from './Header/Header';
+import { AppContainer } from 'react-hot-loader';
+import { Route } from 'react-router-dom';
 import store from './store';
 import i18n from './i18n';
+import Routes from './Routes';
 
-const App = () => (
-    <div>
-        <Header />
-        <Main />
-    </div>
-);
 const history = createHistory();
-render(
-    (
-        <I18nextProvider i18n={i18n}>
-            <Provider store={store}>
-                <ConnectedRouter history={history}>
-                    <App />
-                </ConnectedRouter>
-            </Provider>
-        </I18nextProvider>
-    ),
-    document.getElementById('app'),
-);
+
+if (module.hot) {
+    module.hot.accept();
+}
+
+const render = () => {
+    ReactDOM.render(
+        <AppContainer>
+            <I18nextProvider i18n={i18n}>
+                <Provider store={store}>
+                    <ConnectedRouter history={history}>
+                        <Route component={Routes} />
+                    </ConnectedRouter>
+                </Provider>
+            </I18nextProvider>
+        </AppContainer>,
+        document.getElementById('app'),
+    );
+};
+
+render();

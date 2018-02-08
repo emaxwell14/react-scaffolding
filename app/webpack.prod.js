@@ -6,4 +6,17 @@ module.exports = merge(common, {
     plugins: [
         new UglifyJSPlugin(),
     ],
+    modules: {
+        rules: [
+            {
+                test: /\.(js|jsx)$/,
+                exclude: /node_modules/,
+                use: ['cache-loader',
+                    {
+                        loader: 'babel-loader', query: { cacheDirectory: true },
+                    },
+                ],
+            },
+        ],
+    },
 });
