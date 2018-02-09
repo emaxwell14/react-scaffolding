@@ -1,15 +1,17 @@
-import React, { Component } from 'react';
-import { Route } from 'react-router-dom';
-import Routes from './Routes';
+import { connect } from 'react-redux';
+import MainComponent from './MainComponent';
+import actions from './actions';
 
-class Main extends Component {
-    render() {
-        return (
-            <main>
-                <Route component={Routes} />
-            </main>
-        );
-    }
+function mapStateToProps(state) {
+    return {
+        alerts: state.commonStore.alertReducer.alerts,
+    };
 }
 
-export default Main;
+function mapDispatchToProps(dispatch) {
+    return {
+        clearAlert: alert => dispatch(actions.clearAlert(alert)),
+    };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(MainComponent);

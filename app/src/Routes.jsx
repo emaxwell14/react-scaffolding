@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
 import Main from './Main/Main';
-import Header from './Header/Header';
+import Header from './common/header/Header';
 
 class Routes extends Component {
     render() {

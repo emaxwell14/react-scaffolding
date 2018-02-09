@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { translate } from 'react-i18next';
-import LanguageSelector from './components/LanguageSelector';
+import LanguageSelector from '../i18n/LanguageSelector';
 
 const Header = ({ t }) => ( // eslint-disable-line react/prop-types
     <header>

@@ -7,7 +7,7 @@ import { I18nextProvider } from 'react-i18next';
 import { AppContainer } from 'react-hot-loader';
 import { Route } from 'react-router-dom';
 import store from './store';
-import i18n from './i18n';
+import i18n from './common/i18n/i18n';
 import Routes from './Routes';
 
 const history = createHistory();
