@@ -12,7 +12,7 @@ module.exports = {
             'lodash', 'redux-thunk', 'react', 'react-dom', 'react-redux', 'react-router', 'redux-promise-middleware',
             'prop-types', 'react-router-dom', 'history', 'react-router-redux', 'autobind-decorator',
             'bootstrap/dist/css/bootstrap.css', 'bootstrap', 'font-awesome/css/font-awesome.css',
-            'babel-polyfill',
+            'babel-polyfill', 'reactstrap',
         ],
     },
     module: {

@@ -1,4 +1,4 @@
-import types from '../common/alert/types';
+import types from './types';
 
 function clearAlert(alert) {
     return (dispatch) => {

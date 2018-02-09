@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import MainComponent from './MainComponent';
-import actions from './actions';
+import alertActions from '../common/alert/actions';
 
 function mapStateToProps(state) {
     return {
@@ -10,7 +10,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        clearAlert: alert => dispatch(actions.clearAlert(alert)),
+        clearAlert: alert => dispatch(alertActions.clearAlert(alert)),
     };
 }
 
