@@ -2,6 +2,8 @@ const path = require('path');
 const webpack = require('webpack');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const autoprefixer = require('autoprefixer');
 
 module.exports = {
     entry: {
@@ -13,7 +15,68 @@ module.exports = {
         ],
     },
     module: {
-        rules: [],
+        rules: [
+            {
+                test: /\.css$/,
+                use: ExtractTextPlugin.extract({
+                    fallback: 'style-loader',
+                    use: [
+                        'cache-loader',
+                        {
+                            loader: 'css-loader',
+                            query: {
+                                modules: true,
+                                camelCase: true,
+                                localIdentName: '[local]',
+                            },
+                        },
+                        {
+                            loader: 'postcss-loader',
+                            options: {
+                                plugins: () => [
+                                    autoprefixer({
+                                        browsers: ['last 3 versions', 'ie > 8'],
+                                    }),
+                                ],
+                            },
+                        },
+                    ],
+                }),
+            },
+            {
+                test: /\.s[ac]ss$/,
+                loader: ExtractTextPlugin.extract({
+                    fallback: 'style-loader',
+                    use: [
+                        'cache-loader',
+                        {
+                            loader: 'css-loader',
+                            query: {
+                                modules: true,
+                                camelCase: true,
+                                localIdentName: '[folder]__[local]',
+                            },
+                        },
+                        {
+                            loader: 'postcss-loader',
+                            options: {
+                                plugins: () => [
+                                    autoprefixer({
+                                        browsers: ['last 3 versions', 'ie > 8'],
+                                    }),
+                                ],
+                            },
+                        },
+                        {
+                            loader: 'sass-loader',
+                            query: {
+                                sourceMaps: 'true',
+                            },
+                        },
+                    ],
+                }),
+            },
+        ],
     },
     resolve: {
         extensions: ['.js', '.jsx'],
@@ -33,6 +96,7 @@ module.exports = {
         new webpack.optimize.CommonsChunkPlugin({
             name: 'manifest',
         }),
+        new ExtractTextPlugin({ filename: getPath => getPath('[name].css') }),
     ],
     output: {
         filename: '[name].[hash].bundle.js',

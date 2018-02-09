@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { translate } from 'react-i18next';
 import { func, arrayOf, string } from 'prop-types';
-
+import styles from './styles.scss';
 
 const Alert = ({ text, clearAlert, t }) => ( // eslint-disable-line
-    <li>
+    <li style={{ float: 'right' }}>
         <p>{t(text)}</p>
         <button onClick={() => clearAlert(text)} >Clear</button>
     </li>
@@ -16,13 +16,13 @@ const propTypes = {
     t: func,
 };
 
-@translate()
+@translate(['errors'])
 class AlertList extends Component {
     render() {
         const { alerts, clearAlert, t } = this.props;
         return (
-            <ul>
-                {alerts.map(alert => (<Alert text={alert} t={t} clearAlert={clearAlert} />))}
+            <ul className={styles.alertList}>
+                {alerts.map(alert => (<Alert key={alert} text={alert} t={t} clearAlert={clearAlert} />))}
             </ul>
         );
     }

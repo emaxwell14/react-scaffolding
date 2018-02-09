@@ -20,6 +20,10 @@
         "SwitchCase": 1
       }
     ],
+    "max-len": [
+      2,
+      120
+    ],
     "react/jsx-indent": [
       2,
       4
