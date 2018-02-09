@@ -11,6 +11,7 @@ module.exports = {
         vendor: [
             'lodash', 'redux-thunk', 'react', 'react-dom', 'react-redux', 'react-router', 'redux-promise-middleware',
             'prop-types', 'react-router-dom', 'history', 'react-router-redux', 'autobind-decorator',
+            'bootstrap/dist/css/bootstrap.css', 'bootstrap', 'font-awesome/css/font-awesome.css',
             'babel-polyfill',
         ],
     },
@@ -76,6 +77,16 @@ module.exports = {
                     ],
                 }),
             },
+            {
+                test: /\.(png|jpe?g|gif|svg|woff2?|eot|ttf|otf|wav)(\?.*)?$/,
+                use: [{
+                    loader: 'url-loader',
+                    query: {
+                        limit: 10,
+                        name: '[name].[ext]',
+                    },
+                }],
+            },
         ],
     },
     resolve: {
@@ -87,16 +98,23 @@ module.exports = {
             inject: true,
             // filename: 'src/index.html',
             template: 'src/index.html', // Used to set name of div to attach react base
-            title: 'Development',
+            title: 'React Scaffolding',
+            // chunks: ['vendor', 'app'],
         }),
         new webpack.HashedModuleIdsPlugin(),
-        new webpack.optimize.CommonsChunkPlugin({
-            name: 'vendor',
-        }),
-        new webpack.optimize.CommonsChunkPlugin({
-            name: 'manifest',
-        }),
+        new webpack.optimize.CommonsChunkPlugin({ name: 'vendor' }),
+        new webpack.optimize.CommonsChunkPlugin({ name: 'manifest' }),
         new ExtractTextPlugin({ filename: getPath => getPath('[name].css') }),
+        new webpack.ProvidePlugin({
+            $: 'jquery',
+            jQuery: 'jquery',
+            'window.jQuery': 'jquery',
+            'window.Tether': 'tether',
+            'window.Popper': 'popper.js',
+            Tether: 'tether',
+            Popper: ['popper.js', 'default'],
+            _sortBy: ['lodash', 'sortBy'], // Example
+        }),
     ],
     output: {
         filename: '[name].[hash].bundle.js',
