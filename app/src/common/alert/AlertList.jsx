@@ -1,13 +1,18 @@
 import React, { Component } from 'react';
 import { translate } from 'react-i18next';
-import { func, arrayOf, string } from 'prop-types';
+import { func, arrayOf, string, shape } from 'prop-types';
 import classnames from 'classnames';
 import styles from './styles.scss';
 import CustomAlert from './CustomAlert';
 
 
 const propTypes = {
-    alerts: arrayOf(string),
+    alerts: arrayOf(shape({
+        id: string,
+        behavior: string,
+        header: string,
+        body: string,
+    })),
     clearAlert: func,
 };
 

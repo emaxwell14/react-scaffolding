@@ -1,3 +1,5 @@
 {
+  "SERVER_HEADER": "Server Error",
+  "SERVER_ERROR": "No response from server",
   "CALL_API_REJECTED": "No response from server"
 }

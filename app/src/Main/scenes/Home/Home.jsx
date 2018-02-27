@@ -11,6 +11,7 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
     return {
         callApi: () => dispatch(actions.callApi()),
+        createAlert: () => dispatch(actions.createAlert()),
     };
 }
 

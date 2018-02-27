@@ -1,7 +1,7 @@
 {
   "home": {
     "name": "Accueil",
-    "title": "Bienvenue"
+    "title": "Demo des alertes"
   },
   "tasks": {
     "name": "Tâches",
@@ -19,9 +19,11 @@
   },
   "actions": {
     "callApi": "Appeller l'API",
+    "language": "Langue",
     "languages": {
       "en": "Anglais",
       "fr": "Français"
-    }
+    },
+    "createAlert": "Crée une alerte"
   }
 }

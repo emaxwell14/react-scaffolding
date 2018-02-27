@@ -1,11 +1,16 @@
 import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
-import { arrayOf, string, func } from 'prop-types';
+import { arrayOf, string, func, shape } from 'prop-types';
 import Routes from './Routes';
 import AlertList from '../common/alert/AlertList';
 
 const propTypes = {
-    alerts: arrayOf(string),
+    alerts: arrayOf(shape({
+        id: string,
+        behavior: string,
+        header: string,
+        body: string,
+    })),
     clearAlert: func,
 };
 

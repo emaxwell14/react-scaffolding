@@ -1,7 +1,8 @@
 {
+  "title": "React Scaffolding",
   "home": {
     "name": "Home",
-    "title": "Hello React project"
+    "title": "Alert Demo"
   },
   "tasks": {
     "name": "Tasks",
@@ -20,9 +21,12 @@
   },
   "actions": {
     "callApi": "Call API",
+    "language": "Language",
     "languages": {
       "en": "English",
+      "en": "English",
       "fr": "French"
-    }
+    },
+    "createAlert": "Create Alert"
   }
 }

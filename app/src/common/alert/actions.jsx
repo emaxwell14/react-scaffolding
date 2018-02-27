@@ -1,8 +1,8 @@
 import types from './types';
 
-function clearAlert(alert) {
+function clearAlert(alertId) {
     return (dispatch) => {
-        dispatch({ ...types.CLEAR_ALERT, payload: alert });
+        dispatch({ ...types.CLEAR_ALERT, payload: alertId });
     };
 }
 
